@@ -1,0 +1,32 @@
+'''We recommend farmers of Bihar, Telangana, Karnataka, Maharashtra, Madhya Pradesh, Tamil Nadu, Andhra Pradesh,
+Rajasthan and Uttar Pradesh to grow maize'''
+'''Maize is Kharif crop and water dependent'''
+'''Source: http://agricoop.gov.in'''
+'''Source: https://www.indexmundi.com'''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\maizecsv.csv')
+rain = dataset.iloc[:,1].values
+maize = dataset.iloc[:,0].values
+
+from sklearn.model_selection import train_test_split
+rain_train,rain_test,maize_train,maize_test=train_test_split(rain,maize,test_size=0.2,random_state=0)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+maize_train =maize_train.reshape(-1, 1)
+maize_test= maize_test.reshape(-1, 1)
+
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(rain_train,maize_train)
+
+cotton_pred = regressor.predict(maize_test)
+plt.scatter(rain_train,maize_train,color='red')
+plt.plot(rain_train,regressor.predict(rain_train),color='blue')
+plt.xlabel('Rain in mm in Maize growing areas')
+plt.ylabel('Maize Growth in 1000 MT')
+plt.show()
