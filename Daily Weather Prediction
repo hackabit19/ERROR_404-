@@ -7,5 +7,8 @@ json_data = requests.get(url).json()
 print("Complete Details of your surrounding =")
 print(json_data)
 format_add = json_data['weather'][0]['main']
-print('Weather Forecast of:')
-print(format_add)
+print('Weather Forecast of today: '+format_add)
+f = json_data["main"]['humidity']
+print('Humidity :'+ str(f) + '%')
+t1 = int(json_data["main"]["temp_max"])-273
+print("Maximum temperature : "+str(t1)+" degree celsius")
