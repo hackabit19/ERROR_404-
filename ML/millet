@@ -1,0 +1,36 @@
+'''Millet is Chiefly grown in U.P.,Tamil Nadu,Andhra Pradesh,Maharashtra and Gujarat '''
+'''The season for growing is Kharif season'''
+'''Data source for Millet Production: '''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\milletcsv.csv')
+rain = dataset.iloc[:,1].values
+millet = dataset.iloc[:,0].values
+
+from sklearn.model_selection import train_test_split
+rain_train,rain_test,millet_train,millet_test=train_test_split(rain,millet,test_size=0.1,random_state=0)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+millet_train = millet_train.reshape(-1, 1)
+millet_test= millet_test.reshape(-1, 1)
+
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(rain_train,millet_train)
+
+millet_pred = regressor.predict(millet_test)
+plt.scatter(rain_train,millet_train,color='red')
+plt.plot(rain_train,regressor.predict(rain_train),'o',color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Millet Growth in 1000 MT')
+plt.show()
+
+'''plt.plot(rain_train,millet_train,'o',color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Millet Growth in 1000 MT')
+plt.show()'''
+
