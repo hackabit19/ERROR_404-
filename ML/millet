@@ -1,6 +1,7 @@
 '''Millet is Chiefly grown in U.P.,Tamil Nadu,Andhra Pradesh,Maharashtra and Gujarat '''
 '''The season for growing is Kharif season'''
-'''Data source for Millet Production: '''
+'''Data source for Millet Production: indexmundi.com '''
+'''Data source for rain in Millet growing areas: Kaggle'''
 
 import pandas as pd
 import numpy as np
