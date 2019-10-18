@@ -1,0 +1,31 @@
+'''Rice is a kharif crop grown in UP,Bihar,West Bengal,Andhra,Madhya Pradesh,Kerala and Tamil Nadu'''
+'''Source of information: indexmundi.com'''
+'''Recommended if Rainfall is high in your region'''
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\lnew.csv')
+rain=dataset.iloc[:,1].values
+rice=dataset.iloc[:,0].values
+from sklearn.model_selection import train_test_split
+rain_train,rain_test,rice_train,rice_test=train_test_split(rain,rice,test_size=0.2,random_state=0)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+rice_train = rice_train.reshape(-1, 1)
+rice_test= rice_test.reshape(-1, 1)
+
+
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(rain_train,rice_train)
+
+rice_pred = regressor.predict(rice_test)
+plt.scatter(rain_test,rice_test,color='red')
+plt.plot(rain_train,regressor.predict(rain_train),'o',color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Rice Growth in 1000 MT')
+plt.show()
+
+
