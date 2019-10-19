@@ -1,0 +1,37 @@
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\coffeecsv.csv')
+rain = dataset.iloc[:,1].values
+coffee = dataset.iloc[:,0].values
+
+'''from sklearn.model_selection import train_test_split
+rain_train,rain_test,coffee_train,coffee_test=train_test_split(rain,coffee,test_size=0.2,random_state=0)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+coffee_train =coffee_train.reshape(-1, 1)
+coffee_test= coffee_test.reshape(-1, 1)'''
+
+
+rain = rain.reshape(-1, 1)
+coffee =coffee.reshape(-1, 1)
+from sklearn.preprocessing import StandardScaler
+sc_rain=StandardScaler()
+sc_coffee=StandardScaler()
+rain=sc_rain.fit_transform(rain)
+coffee=sc_coffee.fit_transform(coffee)
+
+from sklearn.svm import SVR
+regressor = SVR(kernel='rbf')
+regressor.fit(rain,coffee)
+
+coffee_pred = regressor.predict(coffee)
+plt.scatter(rain,coffee,color='red')
+plt.plot(rain,regressor.predict(rain),'o',color='blue')
+plt.xlabel('Rain in mm in Coffee growing areas ')
+plt.ylabel('Coffee Growth in 1000 MT')
+plt.show()
