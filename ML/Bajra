@@ -1,0 +1,34 @@
+'''Bajra growing states are  Rajasthan, Maharashtra, Haryana, Uttar Pradesh, and Gujarat'''
+'''We recommend farmers of these states to grow it when rain is higher than 900 mm'''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\bajracsv.csv')
+rain = dataset.iloc[:,1].values
+bajra = dataset.iloc[:,0].values
+
+from sklearn.model_selection import train_test_split
+rain_train,rain_test,bajra_train,bajra_test=train_test_split(rain,bajra,test_size=0.1,random_state=0)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+bajra_train =bajra_train.reshape(-1, 1)
+bajra_test= bajra_test.reshape(-1, 1)
+
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(rain_train,bajra_train)
+
+bajra_pred = regressor.predict(bajra_test)
+plt.scatter(rain_train,bajra_train,color='red')
+plt.plot(rain_train,regressor.predict(rain_train),color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Bajrat Growth in 1000 MT')
+plt.show()
+
+'''plt.plot(rain_train,millet_train,'o',color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Millet Growth in 1000 MT')
+plt.show()'''
