@@ -1,0 +1,34 @@
+'''We recommend growing ragi in Rajasthan, Karnataka, Andhra Pradesh, Tamil Nadu, Orissa, Maharashtra'''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sklearn
+
+dataset = pd.read_csv(r'C:\Users\Shrey\PycharmProjects\helloworld\ragicv.csv')
+rain = dataset.iloc[:,1].values
+ragi = dataset.iloc[:,0].values
+
+from sklearn.model_selection import train_test_split
+rain_train,rain_test,ragi_train,ragi_test=train_test_split(rain,ragi,test_size=0.1,random_state=5)
+rain_train = rain_train.reshape(-1, 1)
+rain_test = rain_test.reshape(-1, 1)
+ragi_train =ragi_train.reshape(-1, 1)
+ragi_test= ragi_test.reshape(-1, 1)
+
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(rain_train,ragi_train)
+
+ragi_pred = regressor.predict(ragi_test)
+plt.scatter(rain_train,ragi_train,color='red')
+plt.plot(rain_train,regressor.predict(rain_train),color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Ragi Growth in 1000 MT')
+plt.show()
+
+'''plt.plot(rain_train,millet_train,'o',color='blue')
+plt.xlabel('Rain in mm')
+plt.ylabel('Ragi Growth in 1000 MT')
+plt.show()'''
+
