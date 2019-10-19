@@ -1,0 +1,393 @@
+
+.site-section-cover {
+	position: relative;
+	background-position: center center;
+	&, .container {
+		position: relative;
+		z-index: 2;
+	}
+	&, .container > .row {
+		height: 100vh;
+		min-height: 700px;	
+		@include media-breakpoint-down(md) {
+			height: 70vh;
+			min-height: 400px;	
+		}
+	}
+	&.overlay {
+		position: relative;
+		&:before {
+			position: absolute;
+			content: "";
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba($dark, .3);
+			z-index: 1;
+		}
+	}
+	&.inner-page {
+		&, .container > .row {
+			height: auto;
+			min-height: auto;
+			padding: 2em 0;
+		}
+	}
+	&.img-bg-section {
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	
+	h1 {
+		font-size: 3rem;
+		color:$white;
+		line-height: 1;
+		@include media-breakpoint-down(md) {
+			font-size: 2rem;
+		}
+	}
+	p {
+		font-size: 1.6rem;
+		color: rgba($white, .8);
+	}
+	.btn-white {
+
+	}
+	
+
+}
+
+.site-section {
+	padding: 7rem 0;
+	@include media-breakpoint-down(md) {
+		padding: 3rem 0;
+	}
+}
+
+
+.slide-one-item {
+	.owl-nav {
+		.owl-prev, .owl-next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 5rem;
+			color: rgba($white, .4);
+			&:hover {
+				color: $white;
+			}
+		}
+		.owl-prev {
+			left: 20px;
+		}
+		.owl-next {
+			right: 20px;
+		}
+	}	
+}
+
+.intro-engage {
+	> div {
+		padding: 50px;
+		position: relative;
+		h2 {
+			color: $white;
+			font-family: $font-family-2;
+			text-transform: uppercase;
+			letter-spacing: .1rem;
+		}
+		p {
+			color: rgba($white, .5);
+		}
+		&:before {
+			content: "";
+			position: absolute;
+			top: 20px;
+			bottom: 20px;
+			left: 20px;
+			right: 20px;
+			border: 2px solid rgba($white, .5);
+		}
+		&:nth-of-type(1) {
+			background-color: #4e4e4e;
+		}
+		&:nth-of-type(2) {
+			background-color: $primary;
+		}
+		&:nth-of-type(3) {
+			background-color: #a23131;
+		}
+		
+		*:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+.block-img-video-1-wrap {
+	.block-img-video-1 {
+		position: relative;
+		margin-top: -10rem;
+	}
+}
+.block-img-video-1 {
+	> a {
+		display: block;
+		position: relative;
+		cursor: pointer;
+		.icon {
+			position: absolute;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			display: inline-block;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			// @extend .gradient-bg-1;
+			background: $white;
+			> span {
+				position: absolute;
+				top: 50%;
+				font-size: .8rem;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				color: $black;
+			}
+		}
+	}
+}
+
+.block-counter-1 {
+	text-align: center;
+	.number, .caption {
+		display: block;
+		line-height: 1;
+	}
+	.number {
+		color: $primary;
+		font-size: 4rem;
+		position: relative;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		font-family: $font-family-2;
+		&:after {
+			position: absolute;
+			content: "";
+			width: 50px;
+			height: 3px;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
+			background: rgba($black, .3);
+		}
+	}
+
+	&.block-counter-1-sm {
+		text-align: left;
+		.number {
+			&:after {
+				left: 0;
+				transform: translateX(0);
+			}
+		}
+	}
+	
+}
+
+
+.block-social-1 {
+	> a {
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		position: relative;
+		span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+.block-testimony-1 {
+	padding:20px;	
+
+	blockquote {
+		background: $white;
+		padding: 30px;
+		font-style: italic;
+		font-size: 18px;
+		color: $black;
+		font-family: 'Georgia', Times, serif;
+	}
+	figure {
+		position: relative;
+		padding-top: 20px;
+		&:before {
+			position: absolute;
+			content: "";
+			width: 50px;
+			left: 50%;
+			display: none;
+			top: 0;
+			transform: translateX(-50%);
+			background: $primary;
+			height: 2px;
+		}
+		img {
+			max-width: 60px;
+		}
+	}
+	h3 {
+		font-size: 18px;	
+	}
+}
+
+
+.block-team-member-1 {
+	padding: 30px;
+	border: 1px solid $gray-200;
+	figure {
+		img {
+			width: 130px;
+		}
+	}
+}
+
+.section-title {
+	font-size: 4rem!important;
+	@include media-breakpoint-down(md) {
+		font-size: 2rem!important;
+	}
+}
+
+.sidebar-box {
+	margin-bottom: 30px;
+	padding: 25px;
+	font-size: 15px;
+	width: 100%;
+	
+	float: left;
+	
+	background: $white;
+	*:last-child {
+		margin-bottom: 0;
+	}
+	h3 {
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+}
+
+.categories, .sidelink {
+	li {
+		position: relative;
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		border-bottom: 1px dotted gray('300');
+		list-style: none;
+		&:last-child {
+			margin-bottom: 0;
+			border-bottom: none;
+			padding-bottom: 0;
+		}
+		a {
+			display: block;
+			span {
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: #ccc;
+			}
+		}
+		&.active {
+			a {
+				color: $black;
+				font-style: italic;
+			}
+		}
+	}
+}
+
+
+.comment-form-wrap {
+	clear: both;
+}
+
+.comment-list {
+	padding: 0;
+	margin: 0;
+	.children {
+		padding: 50px 0 0 40px;
+		margin: 0;
+		float: left;
+		width: 100%;
+	}
+	li {
+		padding: 0;
+		margin: 0 0 30px 0;
+		float: left;
+		width: 100%;
+		clear: both;
+		list-style: none;
+		.vcard {
+			width: 80px;
+			float: left;
+			img {
+				width: 50px;
+				border-radius: 50%;
+			}
+		}
+		.comment-body {
+			float: right;
+			width: calc(100% - 80px);
+			h3 {
+				font-size: 20px;
+				color: $black;
+			}
+			.meta {
+				text-transform: uppercase;
+				font-size: 13px;
+				letter-spacing: .1em;
+				color: #ccc;
+			}
+			.reply {
+				padding: 5px 10px;
+				background: lighten($black, 90%);
+				color: $black;
+				text-transform: uppercase;
+				font-size: 14px;
+				&:hover {
+					color: $black;
+					background: lighten($black, 89%);
+				}
+			}
+		}
+	}
+}
+
+.search-form {
+	background: lighten($black, 97%);
+	padding: 10px;
+
+	.form-group {
+		position: relative;
+		input {
+			padding-right: 50px;
+		}
+	}
+	.icon {
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		transform: translateY(-50%);
+	}
+}
+
+.post-meta {
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	a {
+		color: $white;
+		border-bottom: 1px solid rgba($white, .5);
+	}
+}
