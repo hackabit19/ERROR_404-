@@ -30,5 +30,5 @@ plt.show()
 
 '''plt.plot(rain_train,millet_train,'o',color='blue')
 plt.xlabel('Rain in mm')
-plt.ylabel('Millet Growth in 1000 MT')
+plt.ylabel('Bajra Growth in 1000 MT')
 plt.show()'''
